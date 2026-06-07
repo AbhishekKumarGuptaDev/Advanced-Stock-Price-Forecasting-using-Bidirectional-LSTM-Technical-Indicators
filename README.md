@@ -97,9 +97,13 @@ Traditional LSTMs process sequential information in one direction.
 
 Bidirectional LSTM improves representation learning by capturing:
 
+
 ✔ Short-term market behavior
+
 ✔ Long-range dependencies
+
 ✔ Temporal relationships across multiple indicators
+
 
 This allows improved feature extraction for financial time series.
 
@@ -139,10 +143,15 @@ This allows improved feature extraction for financial time series.
 
 # 📊 Sample Outputs
 
+
 ✔ Historical Price Visualization
+
 ✔ Candlestick + Forecast Overlay
+
 ✔ Future Price Projection
+
 ✔ Growth Percentage Metrics
+
 
 ---
 
@@ -256,9 +265,13 @@ Includes:
 
 This project is intended for:
 
+
 ✔ Research
+
 ✔ Learning
+
 ✔ Portfolio Demonstration
+
 
 It is **NOT financial advice**.
 
