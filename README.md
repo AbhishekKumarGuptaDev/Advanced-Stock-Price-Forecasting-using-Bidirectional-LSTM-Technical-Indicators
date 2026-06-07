@@ -1,119 +1,289 @@
-# Advanced stock forecasting with Bidirectional LSTM + technical indicators, deployed on Hugging Face Spaces with Streamlit UI.
+# 📈 Advanced Stock Price Forecasting using Bidirectional LSTM & Technical Indicators
 
-📈 𝗔𝗱𝘃𝗮𝗻𝗰𝗲𝗱 𝗦𝘁𝗼𝗰𝗸 𝗣𝗿𝗶𝗰𝗲 𝗙𝗼𝗿𝗲𝗰𝗮𝘀𝘁𝗶𝗻𝗴
-𝗕𝗶𝗱𝗶𝗿𝗲𝗰𝘁𝗶𝗼𝗻𝗮𝗹 𝗟𝗦𝗧𝗠 • 𝗧𝗲𝗰𝗵𝗻𝗶𝗰𝗮𝗹 𝗜𝗻𝗱𝗶𝗰𝗮𝘁𝗼𝗿𝘀 • 𝗠𝘂𝗹𝘁𝗶-𝗦𝘁𝗲𝗽 𝗧𝗶𝗺𝗲 𝗦𝗲𝗿𝗶𝗲𝘀 𝗣𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝗼𝗻 • 𝗗𝗲𝗽𝗹𝗼𝘆𝗲𝗱 𝗼𝗻 𝗛𝘂𝗴𝗴𝗶𝗻𝗴 𝗙𝗮𝗰e
+Deep Learning • Time Series Forecasting • Quantitative Finance • Streamlit • Hugging Face Spaces
 
-🔍 𝗢𝘃𝗲𝗿𝘃𝗶𝗲𝘄
+---
 
-This project implements a 𝗺𝘂𝗹𝘁𝗶𝘃𝗮𝗿𝗶𝗮𝘁𝗲 𝗱𝗲𝗲𝗽 𝗹𝗲𝗮𝗿𝗻𝗶𝗻𝗴 model for forecasting future stock price movements using:
-•  𝗕𝗶𝗱𝗶𝗿𝗲𝗰𝘁𝗶𝗼𝗻𝗮𝗹 𝗟𝗦𝗧𝗠 𝗮𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲
-•  𝗢𝗛𝗟𝗖𝗩 (𝗢𝗽𝗲𝗻, 𝗛𝗶𝗴𝗵, 𝗟𝗼𝘄, 𝗖𝗹𝗼𝘀𝗲, 𝗩𝗼𝗹𝘂𝗺𝗲) 𝗺𝗮𝗿𝗸𝗲𝘁 𝗱𝗮𝘁𝗮
-•  𝗧𝗲𝗰𝗵𝗻𝗶𝗰𝗮𝗹 𝗶𝗻𝗱𝗶𝗰𝗮𝘁𝗼𝗿𝘀 (𝗦𝗠𝗔, 𝗘𝗠𝗔, 𝗥𝗦𝗜, 𝗠𝗔𝗖𝗗, 𝗕𝗼𝗹𝗹𝗶𝗻𝗴𝗲𝗿 𝗕𝗮𝗻𝗱𝘀, 𝗥𝗲𝘁𝘂𝗿𝗻𝘀)
-•  𝗠𝘂𝗹𝘁𝗶-𝘀𝘁𝗲𝗽 𝗳𝗼𝗿𝘄𝗮𝗿𝗱 𝗽𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝗼𝗻 (𝗡-𝗱𝗮𝘆 𝗵𝗼𝗿𝗶𝘇𝗼𝗻)
+## 🚀 Live Demo
 
-The model is deployed as a fully interactive web app where users can enter any stock ticker (AAPL, TSLA, RELIANCE.NS, BTC-USD, etc.) and generate live forecasts based on the most recent market data pulled from Yahoo Finance.
+🌐 **Try the Application**
+https://huggingface.co/spaces/abhishekgupta01/Advanced-Stock-Price-Forecasting-using-Bidirectional-LSTM-Technical-Indicators
 
+📦 **Source Code**
+https://github.com/AbhishekKumarGuptaDev/Advanced-Stock-Price-Forecasting-using-Bidirectional-LSTM-Technical-Indicators
 
-🚀 𝗟𝗶𝘃𝗲 𝗗𝗲𝗺𝗼
+---
 
-Platform	Link
-🌐 Hugging Face App  https://huggingface.co/spaces/abhishekgupta01/Advanced-Stock-Price-Forecasting-using-Bidirectional-LSTM-Technical-Indicators
+## 📌 Project Overview
 
-📦 GitHub Repo  https://github.com/Abhishek-NR01/Advanced-Stock-Price-Forecasting-using-Bidirectional-LSTM-Technical-Indicators
+This project implements an **end-to-end deep learning pipeline for stock market forecasting** using a **Bidirectional Long Short-Term Memory (BiLSTM)** architecture combined with **technical indicators and multivariate financial features**.
 
+The system forecasts future stock price movement using historical market behavior and provides predictions through an interactive web application.
 
-🧠 Model Architecture
-Input → Bidirectional LSTM (64 units) → Dropout
-      → Bidirectional LSTM (64 units) → Dense (64, ReLU)
-      → Dense (Forecast Horizon)
+Users can enter any supported ticker symbol and generate forecasts directly from live market data.
 
+Examples:
 
-𝗪𝗵𝘆 𝗕𝗶𝗟𝗦𝗧𝗠?
+* AAPL
+* TSLA
+* MSFT
+* RELIANCE.NS
+* BTC-USD
+* ETH-USD
 
-Financial time series patterns are not purely sequential — future signals may correlate with past volatility ranges. Bidirectional LSTMs allow the model to learn dependencies in both forward and backward temporal directions.
+---
 
+## 🎯 Objectives
 
-⚙️ 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀
+* Forecast future stock movement using deep learning
+* Improve prediction quality with technical indicators
+* Enable multi-step future prediction
+* Deploy an accessible real-time forecasting platform
 
-✔ Real-time stock data ingestion via 𝘆𝗳𝗶𝗻𝗮𝗻𝗰𝗲
-✔ Automated feature engineering via technical indicators
-✔ Scaled inference pipeline with persisted transformers
-✔ Multi-step forecasting (predicts multiple future business days)
-✔ Interactive interface built using 𝗦𝘁𝗿𝗲𝗮𝗺𝗹𝗶𝘁
-✔ Candlestick + forecast overlays using Plotly
-✔ Exportable prediction table
+---
 
+# 🏗 System Architecture
 
-🧰 𝗧𝗲𝗰𝗵 𝗦𝘁𝗮𝗰𝗸
-   Category	                                  Tools
-    Model	                    TensorFlow / Keras (Bidirectional LSTM)
-    Data	                          Yahoo Finance (yfinance)
-    Deployment	                  Streamlit + Hugging Face Spaces
-    Feature                   Engineering	Pandas, NumPy, TA Indicators
-    Visualization                      	Plotly, Matplotlib
-    Serialization        	Pickle (joblib), .h5 weights, metadata dictionary
+```text
+Yahoo Finance
+      │
+      ▼
+Data Collection (yfinance)
+      │
+      ▼
+Feature Engineering
+(SMA • EMA • RSI • MACD • BBANDS • Returns)
+      │
+      ▼
+Data Scaling
+      │
+      ▼
+Bidirectional LSTM
+      │
+      ▼
+Multi-Step Forecast
+      │
+      ▼
+Streamlit UI
+      │
+      ▼
+Hugging Face Deployment
+```
 
-    
-📦 𝗜𝗻𝘀𝘁𝗮𝗹𝗹𝗮𝘁𝗶𝗼𝗻
-Clone the repository:
+---
 
-git clone https://github.com/Abhishek-NR01/Advanced-Stock-Price-Forecasting-using-Bidirectional-LSTM-Technical-Indicators
+# 🧠 Model Architecture
+
+```text
+Input Layer
+     │
+Bidirectional LSTM (64)
+     │
+Dropout
+     │
+Bidirectional LSTM (64)
+     │
+Dense (64, ReLU)
+     │
+Output Layer
+(Future Forecast Horizon)
+```
+
+---
+
+## Why Bidirectional LSTM?
+
+Traditional LSTMs process sequential information in one direction.
+
+Bidirectional LSTM improves representation learning by capturing:
+
+✔ Short-term market behavior
+✔ Long-range dependencies
+✔ Temporal relationships across multiple indicators
+
+This allows improved feature extraction for financial time series.
+
+---
+
+# ✨ Features
+
+### Real-Time Market Data
+
+* Live stock retrieval using Yahoo Finance
+
+### Automated Feature Engineering
+
+* SMA
+* EMA
+* RSI
+* MACD
+* Bollinger Bands
+* Daily Returns
+
+### Forecasting Engine
+
+* Multi-step future prediction
+* Business-day aligned output
+
+### Interactive Dashboard
+
+* Forecast visualization
+* Candlestick analysis
+* Trend overlays
+
+### Export Support
+
+* Prediction table generation
+
+---
+
+# 📊 Sample Outputs
+
+✔ Historical Price Visualization
+✔ Candlestick + Forecast Overlay
+✔ Future Price Projection
+✔ Growth Percentage Metrics
+
+---
+
+# 🛠 Tech Stack
+
+| Layer                | Technology               |
+| -------------------- | ------------------------ |
+| Model                | TensorFlow / Keras       |
+| Deep Learning        | Bidirectional LSTM       |
+| Data Source          | Yahoo Finance            |
+| Backend              | Python                   |
+| Data Processing      | Pandas, NumPy            |
+| Technical Indicators | TA                       |
+| Visualization        | Plotly, Matplotlib       |
+| Deployment           | Streamlit + Hugging Face |
+| Serialization        | Joblib, Pickle           |
+
+---
+
+# 📂 Project Structure
+
+```bash
+Advanced-Stock-Price-Forecasting/
+│
+├── app.py
+├── requirements.txt
+├── model/
+│     ├── bilstm_model.h5
+│     ├── scaler.pkl
+│     └── metadata.pkl
+│
+├── notebooks/
+│     └── Stock_Price_Prediction_using_Bidirectional_LSTM.ipynb
+│
+├── src/
+│     ├── preprocessing.py
+│     ├── indicators.py
+│     ├── forecasting.py
+│     └── visualization.py
+│
+├── assets/
+│     ├── banner.png
+│     └── screenshots/
+│
+└── README.md
+```
+
+---
+
+# ⚙ Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/AbhishekKumarGuptaDev/Advanced-Stock-Price-Forecasting-using-Bidirectional-LSTM-Technical-Indicators.git
+```
+
+## Move to Project Directory
+
+```bash
 cd Advanced-Stock-Price-Forecasting-using-Bidirectional-LSTM-Technical-Indicators
+```
 
+## Install Dependencies
 
-Install dependencies:
+```bash
 pip install -r requirements.txt
+```
 
+## Run Application
 
-Run the app locally:
-    streamlit run app.py
+```bash
+streamlit run app.py
+```
 
+---
 
-📊 𝗦𝗮𝗺𝗽𝗹𝗲 𝗢𝘂𝘁𝗽𝘂𝘁
+# 🧪 Training Notebook
 
-🔹 Price trajectory with prediction overlay
-🔹 Candlestick visualization + model trend line
-🔹 Forecast table including business-day aligned values
-🔹 Growth % metrics (next session vs. full horizon)
+Retraining pipeline available in:
 
+```bash
+notebooks/Stock_Price_Prediction_using_Bidirectional_LSTM.ipynb
+```
 
-🧪 𝗧𝗿𝗮𝗶𝗻𝗶𝗻𝗴 𝗡𝗼𝘁𝗲𝗯𝗼𝗼𝗸
-Model retraining can be executed from:
+Includes:
 
-Stock_Price_Prediction_using_Bidirectional_LSTM.ipynb
+* Data Collection
+* Feature Engineering
+* Sequence Generation
+* Model Training
+* Evaluation
+* Model Export
 
+---
 
-This notebook includes:
+# 📈 Future Improvements
 
-Data collection
-Feature engineering
-Training loop
-Model evaluation & saving
-Scaler and metadata persistence
+* Sentiment Analysis Integration
+* News-based Signals
+* Walk Forward Validation
+* Transformer Models
+* Portfolio Optimization
+* Telegram Alert System
+* PDF Forecast Reports
+* Multi-Asset Forecasting
 
+---
 
-📈 𝗣𝗹𝗮𝗻𝗻𝗲𝗱 𝗘𝗻𝗵𝗮𝗻𝗰𝗲𝗺𝗲𝗻𝘁𝘀
+# ⚠ Disclaimer
 
-📌 Add sentiment features (news headlines, earnings reports)
-📌 Implement walk-forward validation / rolling retraining
-📌 Support multi-asset correlation forecasting
-📌 Export: CSV, PDF report, Telegram/WhatsApp signal bot
-📌 Compare vs. Prophet, ARIMA, TCN, and Transformer-based models
+This project is intended for:
 
+✔ Research
+✔ Learning
+✔ Portfolio Demonstration
 
-⚠️ 𝗗𝗶𝘀𝗰𝗹𝗮𝗶𝗺𝗲𝗿
+It is **NOT financial advice**.
 
-This project is 𝗳𝗼𝗿 𝗲𝗱𝘂𝗰𝗮𝘁𝗶𝗼𝗻𝗮𝗹 𝗮𝗻𝗱 𝗿𝗲𝘀𝗲𝗮𝗿𝗰𝗵 𝗽𝘂𝗿𝗽𝗼𝘀𝗲𝘀 𝗼𝗻𝗹𝘆.
-It is 𝗻𝗼𝘁 𝗳𝗶𝗻𝗮𝗻𝗰𝗶𝗮𝗹 𝗮𝗱𝘃𝗶𝗰𝗲 and should not be used for live trading without further evaluation, risk modeling, and validation.
+Predictions should not be used for real trading decisions without additional validation and risk management.
 
+---
 
-⭐ 𝗖𝗼𝗻𝘁𝗿𝗶𝗯𝘂𝘁𝗲
+# 🤝 Contributions
 
-Pull requests and feature suggestions are welcome.
-If you'd like to collaborate on improving the forecasting engine or expanding it into a production-grade quant framework, feel free to open an issue.
+Contributions are welcome.
 
+If you'd like to improve forecasting performance or extend deployment features:
 
-🏷 𝗔𝘂𝘁𝗵𝗼𝗿
+1. Fork repository
+2. Create feature branch
+3. Commit changes
+4. Open Pull Request
 
-𝗕𝘂𝗶𝗹𝘁 𝗯𝘆: Abhishek Kumar Gupta
-📬 Machine Learning & Quant Finance Enthusiast
+---
+
+# 👨‍💻 Author
+
+### Abhishek Kumar Gupta
+
+B.Tech CSE (AI & ML)
+Machine Learning • Deep Learning • Quantitative Finance
+
+⭐ If you found this project useful, consider starring the repository.
